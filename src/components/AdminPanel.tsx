@@ -6,7 +6,7 @@ interface Props {
 }
 
 const AdminPanel = ({ account, chatContract }: Props) => {
-    const [banUserAddress, setBanUserAddress] = useState<string>("");
+    const [userAddress, setUserAddress] = useState<string>("");
     const [changeAdminAddress, setAdminAddress] = useState<string>("");
     const [txnStatus, setTxnStatus] = useState<string | null>(null);
 
@@ -26,12 +26,25 @@ const AdminPanel = ({ account, chatContract }: Props) => {
     const banUser = async () => {
         if (!chatContract) return;
         try {
-            const messageTxn = await chatContract.banUser(banUserAddress)
+            const messageTxn = await chatContract.banUser(userAddress)
             await messageTxn.wait();
         } catch (e) {
             console.warn("Transaction failed with error", e);
         } finally {
-            setBanUserAddress("");
+            setUserAddress("");
+            setTxnStatus(null);
+        }
+    };
+
+    const unbanUser = async () => {
+        if (!chatContract) return;
+        try {
+            const messageTxn = await chatContract.unbanUser(userAddress)
+            await messageTxn.wait();
+        } catch (e) {
+            console.warn("Transaction failed with error", e);
+        } finally {
+            setUserAddress("");
             setTxnStatus(null);
         }
     };
@@ -56,12 +69,13 @@ const AdminPanel = ({ account, chatContract }: Props) => {
                 <button onClick={deleteMessages} className="clear-chat-button" disabled={!!txnStatus} >Clear Chat</button>
             </div>
             <div className="ban-user-section">
-                <input type="text" placeholder="Enter user adress..." value={banUserAddress}
+                <input type="text" placeholder="Enter user adress..." value={userAddress}
                     disabled={!!txnStatus}
                     onChange={(e) => {
-                        setBanUserAddress(e.target.value);
+                        setUserAddress(e.target.value);
                     }} 
                     className="ban-adress-input" />
+                <button onClick={unbanUser} className="unban-button" disabled={!!txnStatus}>{txnStatus || "UNBAN USER"}</button>
                 <button onClick={banUser} className="ban-button" disabled={!!txnStatus}>{txnStatus || "BAN USER"}</button>
             </div>
             <div className="change-admin-section">
