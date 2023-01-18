@@ -16,14 +16,13 @@ const Chat = ({ account, chatContract }: Props) => {
   const getMessages = async () => {
     if (!chatContract || account) return;
 
-    const messages = await chatContract.getMessages();
-    console.log("messagessssss",messages);
-    //const messages = [{"sender":"0xC877CC82D3cadd73000c88B47313b5de03e49EdD","date":null,"content":"poru😀ka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka2"},{"sender":"xx","date":null,"content":"poruka3"},{"sender":"xx","date":null,"content":"poruka4"}]
+    //const messages = await chatContract.getMessages();
+    const messages = [{"sender":"0xC877CC82D3cadd73000c88B47313b5de03e49EdD","date":null,"content":"poru😀ka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka2"},{"sender":"xx","date":null,"content":"poruka3"},{"sender":"xx","date":null,"content":"poruka4"}]
     setMessages(() => {
       return messages.map((w: any) => ({
         address: w.sender,
         content: w.content,
-        date: w.timestamp.toNumber(),
+        date: w.date,
       }));
     });
   };
