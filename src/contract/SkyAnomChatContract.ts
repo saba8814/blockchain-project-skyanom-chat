@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 
-const useChatContract = (
+const ChatContract = (
   contractAddress: string,
   web3ChatAbi: ethers.ContractInterface,
   account?: string
@@ -33,4 +33,4 @@ const useChatContract = (
   );
 };
 
-export default useChatContract;
+export default ChatContract;

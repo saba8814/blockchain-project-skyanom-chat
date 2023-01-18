@@ -16,13 +16,13 @@ const Chat = ({ account, chatContract }: Props) => {
   const getMessages = async () => {
     if (!chatContract || account) return;
 
-    //const messages = await chatContract.getMessages();
-    const messages = [{"sender":"0xC877CC82D3cadd73000c88B47313b5de03e49EdD","date":null,"content":"poru😀ka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka2"},{"sender":"xx","date":null,"content":"poruka3"},{"sender":"xx","date":null,"content":"poruka4"}]
+    const messages = await chatContract.getMessages();
+    //const messages = [{"sender":"0xC877CC82D3cadd73000c88B47313b5de03e49EdD","date":null,"content":"poru😀ka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka2"},{"sender":"xx","date":null,"content":"poruka3"},{"sender":"xx","date":null,"content":"poruka4"}]
     setMessages(() => {
       return messages.map((w: any) => ({
         address: w.sender,
         content: w.content,
-        date: w.date,
+        date: w.timestamp.toNumber(),
       }));
     });
   };
@@ -65,13 +65,13 @@ const Chat = ({ account, chatContract }: Props) => {
   return (
     <div className="chat">
       <div className="chat__messages">
-        {!chatContract && (
+        {(!chatContract || !account) && (
           <p className="state-message">
-            Connect to the chat in order to see the messages!
+            Connect using metamask to access chat!
           </p>
         )}
         {account && messages && messages.length === 0 && (
-          <p className="state-message">There is no message to display</p>
+          <p className="state-message">Chat is empty!</p>
         )}
         {messages &&
           messages.length > 0 &&
@@ -85,9 +85,7 @@ const Chat = ({ account, chatContract }: Props) => {
             />
           ))}
       </div>
-      {!account && (
-          <p className="state-message">Connect With Metamask to chat!</p>
-        )}
+
       <div className="chat__actions-wrapper">
         <div className="chat__input">
           <textarea

@@ -12,9 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.address-text{
-  color:#8388b2;
+
+.address-text {
+  color: #8388b2;
 }
+
 .state-message {
   text-align: center;
   font-size: 13px;
@@ -37,11 +39,13 @@ code {
   text-align: center;
   margin-bottom: 30px;
 }
-.login-button{
+
+.login-button {
   background-color: #32ba89;
   padding: 15px;
   border-radius: 10px;
 }
+
 .chat {
   display: flex;
   flex-direction: column;
@@ -51,8 +55,10 @@ code {
   border: 1px solid black;
   background-color: #222336;
   border-radius: 15px;
+  position: relative;
   height: 60vh;
 }
+
 .chat::-webkit-scrollbar {
   width: 10px;
 }
@@ -64,13 +70,14 @@ code {
 
 /* Handle */
 .chat::-webkit-scrollbar-thumb {
-  background:#222336 ;
+  background: #222336;
 }
 
 /* Handle on hover */
 .chat::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 .chat_messages {
   overflow: visible scroll;
   padding-bottom: 20px;
@@ -79,11 +86,10 @@ code {
 
 .chat__actions-wrapper {
   display: flex;
-  flex:1;
+  flex: 1;
+  width: 100%;
   flex-direction: row;
-  justify-content: flex-end;
   margin-bottom: 10px;
-  position: relative;
   bottom: 0px;
 }
 
@@ -96,17 +102,20 @@ code {
 }
 
 textarea {
-background-color: #868e96;
-border-radius: 10px;
-height: 45px;
-width:100%;
+  resize: none;
+  background-color: #868e96;
+  border-radius: 10px;
+  height: 45px;
+  width: 100%;
 }
-.send-message-button{
+
+.send-message-button {
   background-color: #20c997;
-  flex:1;
+  flex: 1;
   height: 55px;
   border-radius: 15px;
 }
+
 .chat__row {
   margin: 20px 10px;
 }
@@ -142,7 +151,7 @@ width:100%;
 }
 
 .chat__message.left {
-  color:#babbcc;
+  color: #babbcc;
   background-color: #35384c;
 }
 
@@ -163,7 +172,7 @@ width:100%;
   -webkit-transform: rotate(118deg) skew(-5deg);
 }
 
-.logo-section{
+.logo-section {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -173,37 +182,43 @@ width:100%;
   height: 80px;
   margin-bottom: 30px;
 }
-.sky-logo{
-  height: 80px;
-}
-.anom-logo{
+
+.sky-logo {
   height: 80px;
 }
 
-.logo{
-  filter:grayscale(1);
+.anom-logo {
+  height: 80px;
+}
+
+.logo {
+  filter: grayscale(1);
   transition: 0.5s all;
 }
 
-.logo:hover{
+.logo:hover {
   filter: grayscale(0);
   height: 85px;
   transition: 0.5s all;
 }
-.admin-panel-wrapper{
+
+.admin-panel-wrapper {
   margin-bottom: 35px;
 }
-.section-title{
+
+.section-title {
   align-self: center;
   text-align: center;
 }
-.ban-user-section{
+
+.ban-user-section {
   display: flex;
   flex-direction: row;
-  gap:15px;
+  gap: 15px;
   margin-bottom: 15px;
 }
-.ban-adress-input{
+
+.ban-adress-input {
   height: 35px;
   border-radius: 10px;
   background-color: #868e96;
@@ -212,27 +227,31 @@ width:100%;
   flex: 4;
 }
 
-.ban-button{
+.ban-button {
   background-color: crimson;
   height: 38px;
-  flex:1;
+  flex: 1;
   border-radius: 10px;
 }
-button:hover{
+
+button:hover {
   cursor: pointer;
 }
-.unban-button{
+
+.unban-button {
   background-color: teal;
   height: 38px;
-  flex:1;
+  flex: 1;
   border-radius: 10px;
 }
-.change-admin-section{
+
+.change-admin-section {
   display: flex;
   flex-direction: row;
-  gap:15px;
+  gap: 15px;
 }
-.change-admin-input{
+
+.change-admin-input {
   height: 35px;
   border-radius: 10px;
   background-color: #868e96;
@@ -240,20 +259,28 @@ button:hover{
   width: 100%;
   flex: 4;
 }
-.change-button{
+
+.change-button {
   background-color: teal;
   height: 38px;
-  flex:1;
+  flex: 1;
   border-radius: 10px;
 }
-.clear-chat-section{
+
+.clear-chat-section {
   display: flex;
 }
-.clear-chat-section button{
-  flex:1;
+
+.clear-chat-section button {
+  flex: 1;
   height: 35px;
   background-color: coral;
   border-radius: 15px;
   margin-bottom: 15px;
 }
 
+.error-log{
+  font-size: 3rem;
+  text-align: center;
+  color: red;
+}
