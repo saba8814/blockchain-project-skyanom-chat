@@ -59,6 +59,7 @@ const AdminPanel = ({ account, chatContract }: Props) => {
         } finally {
             setAdminAddress("");
             setTxnStatus(null);
+            window.location.reload();
         }
     };
 

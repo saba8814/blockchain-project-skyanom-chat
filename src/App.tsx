@@ -33,7 +33,7 @@ function App() {
     getAdminAddress();
   }, [chatContract]);
   return (
-    <div className="App">
+    <div className="wrapper">
       <LogoSection />
       <Login setAccount={setAccount} account={account} />
       <Chat account={account} chatContract={chatContract} />
