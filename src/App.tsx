@@ -12,16 +12,24 @@ function App() {
   const [account, setAccount] = useState<string>();
 
   const [adminAddress, setAdminAddress] = useState<string>();
+  const [isUserBanned, setIsUserBanned] = useState<boolean|null>(null);
 
   const getAdminAddress = async () => {
-    if (!chatContract || account) return;
+    if (!chatContract) return;
 
     const adminAddress = await chatContract.getAdmin();
       setAdminAddress(() => {
         return adminAddress;
       });
   };
+  const checkIsUserBanned = async () =>{
+    if(!chatContract) return;
 
+    const isBanned = await chatContract.isBanned(account);
+    setIsUserBanned(() => {
+      return isBanned;
+    });
+  }
   const chatContract = ChatContract(
     contractAddress,
     SkyAnomChatArtifact.abi,
@@ -32,13 +40,26 @@ function App() {
     if (!chatContract) return;
     getAdminAddress();
   }, [chatContract]);
+
+  useEffect(()=>{
+    if (!chatContract) return;
+    checkIsUserBanned();
+  },[account])
+
   return (
     <div className="wrapper">
       <LogoSection />
       <Login setAccount={setAccount} account={account} />
-      <Chat account={account} chatContract={chatContract} />
-      {(account === adminAddress && account) &&
-        <AdminPanel account={account} chatContract={chatContract} />
+      {!isUserBanned &&
+        <>
+          <Chat account={account} chatContract={chatContract} />
+          {(account === adminAddress && account) &&
+            <AdminPanel account={account} chatContract={chatContract} />
+          }
+        </>
+      }
+      {isUserBanned &&
+        <h1>YOU ARE BANNED</h1>
       }
     </div>
   );
