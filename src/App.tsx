@@ -8,7 +8,7 @@ import useChatContract from "./useChatContract";
 import LogoSection from "./components/LogoSection";
 
 function App() {
-  const contractAddress = "0x4943E79593bdcDDC3e97a7811d86df2696b830aa";
+  const contractAddress = "0x74f6ee0990F7F08934Ba8f3614a58e49d9ad68B5";
   const [account, setAccount] = useState<string>();
 
   const [adminAddress, setAdminAddress] = useState<string>();
