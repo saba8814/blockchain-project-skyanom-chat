@@ -4,7 +4,7 @@ import Chat from "./components/Chat";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
 import SkyAnomChatArtifact from "./contract/SkyAnomChat-artifact.json";
-import useChatContract from "./useChatContract";
+import useChatContract from "./contract/SkyAnomChatContract";
 import LogoSection from "./components/LogoSection";
 
 function App() {
