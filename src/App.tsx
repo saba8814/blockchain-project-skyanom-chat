@@ -4,7 +4,7 @@ import Chat from "./components/Chat";
 import Login from "./components/Login";
 import AdminPanel from "./components/AdminPanel";
 import SkyAnomChatArtifact from "./contract/SkyAnomChat-artifact.json";
-import useChatContract from "./useChatContract";
+import ChatContract from "./contract/SkyAnomChatContract";
 import LogoSection from "./components/LogoSection";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       });
   };
 
-  const chatContract = useChatContract(
+  const chatContract = ChatContract(
     contractAddress,
     SkyAnomChatArtifact.abi,
     account

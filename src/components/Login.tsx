@@ -1,6 +1,6 @@
 import React from "react";
 import { ethers } from "ethers";
-import useIsMetaMaskInstalled from "../useIsMetaMaskInstalled";
+import useIsMetaMaskInstalled from "../contract/MetaMask";
 
 interface Props {
   setAccount: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -23,17 +23,17 @@ const Login = ({ setAccount, account }: Props) => {
     <div className="sidebar">
       {account && (
         <>
-          <b>Connected as:</b>
+          <b>You are connected using following address:</b>
           <br />
           <small>{account}</small>
         </>
       )}
-      {!account && (
+      {(!account && isMetaMaskInstalled) && (
         <button onClick={handleOnConnect} className="login-button" disabled={!isMetaMaskInstalled}>
           Login using 🦊
         </button>
       )}
-      {!isMetaMaskInstalled && <p>Please install MetaMask</p>}
+      {!isMetaMaskInstalled && <h1 className="error-log">Please install MetaMask</h1>}
     </div>
   );
 };
