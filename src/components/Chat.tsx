@@ -60,7 +60,7 @@ const Chat = ({ account, chatContract }: Props) => {
     if (!chatContract) return;
     try {
       setTxnStatus("⌛");
-      const messageTxn = await chatContract.sendMessage(crypto.AES.encrypt(textareaContent, 'konjslon').toString());
+      const messageTxn = await chatContract.sendMessage(crypto.AES.encrypt(textareaContent, decryptionKey).toString());
       await messageTxn.wait();
     } catch (e) {
       console.warn("Transaction failed with error", e);

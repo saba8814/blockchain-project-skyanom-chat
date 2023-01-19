@@ -8,7 +8,7 @@ import ChatContract from "./contract/SkyAnomChatContract";
 import LogoSection from "./components/LogoSection";
 
 function App() {
-  const contractAddress = "0x74f6ee0990F7F08934Ba8f3614a58e49d9ad68B5";
+  const contractAddress = "0x199b22375B85959c026509ED0d5Dbddc8785F35A";
   const [account, setAccount] = useState<string>();
   const [adminAddress, setAdminAddress] = useState<string>();
   const [isUserBanned, setIsUserBanned] = useState<boolean|null>(null);
@@ -25,7 +25,7 @@ function App() {
   const checkIsUserBanned = async () =>{
     if(!chatContract) return;
 
-    const isBanned = false;
+    const isBanned = await chatContract.isBanned(account);
     setIsUserBanned(() => {
       return isBanned;
     });
