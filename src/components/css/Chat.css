@@ -9,6 +9,7 @@
     border-radius: 15px;
     position: relative;
     height: 60vh;
+    position: relative;
     padding: 0px 18px 5px 8px;
 }
 
@@ -43,7 +44,8 @@
     flex-direction: row;
     margin-bottom: 10px;
     gap:8px;
-    bottom: 0px;
+    position: sticky;
+    bottom: 0;
 }
 
 .chat-input {
