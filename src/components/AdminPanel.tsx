@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./css/AdminPanel.css"
 import { ethers } from "ethers";
 interface Props {
     account?: string;

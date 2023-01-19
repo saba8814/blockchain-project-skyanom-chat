@@ -1,6 +1,7 @@
 import React from 'react'
 import SkyLogotip from "../assets/skylogotip.jpg";
 import AnomLogotip from "../assets/anomlogotip.jpg";
+import "./css/LogoSection.css"
 
 const LogoSection = () => {
   return (

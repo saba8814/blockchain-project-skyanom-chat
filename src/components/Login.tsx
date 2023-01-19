@@ -1,6 +1,7 @@
 import React from "react";
 import { ethers } from "ethers";
 import useIsMetaMaskInstalled from "../contract/MetaMask";
+import "./css/Login.css"
 
 interface Props {
   setAccount: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -20,7 +21,7 @@ const Login = ({ setAccount, account }: Props) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="login-wrapper">
       {account && (
         <>
           <b>You are connected using following address:</b>

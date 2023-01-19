@@ -1,0 +1,29 @@
+.logo-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.sky-logo {
+    height: 80px;
+}
+
+.anom-logo {
+    height: 80px;
+}
+
+.logo {
+    filter: grayscale(1);
+    transition: 0.5s all;
+}
+
+.logo:hover {
+    filter: grayscale(0);
+    height: 85px;
+    transition: 0.5s all;
+}
