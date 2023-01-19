@@ -1,7 +1,6 @@
 .chat {
     display: flex;
     flex-direction: column;
-    width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid black;
@@ -74,4 +73,26 @@ textarea {
 
 .chat_row {
     margin: 20px 10px;
+}
+
+.encryption-section{
+    display: flex;
+    flex-direction: row;
+    gap:15px;
+}
+.set-encryption-input{
+    flex: 4;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #868e96;
+    border: 1px solid black;
+    width: 100%;
+}
+.set-encryption-button{
+    flex:1;
+    flex: 1;
+    height: 35px;
+    background-color: coral;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
