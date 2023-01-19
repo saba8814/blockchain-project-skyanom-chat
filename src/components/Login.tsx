@@ -1,6 +1,7 @@
 import React from "react";
 import { ethers } from "ethers";
 import useIsMetaMaskInstalled from "../contract/MetaMask";
+import "./css/Login.css"
 
 interface Props {
   setAccount: React.Dispatch<React.SetStateAction<string | undefined>>;

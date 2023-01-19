@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/ChatBubble.css"
 
 interface Props {
   ownMessage?: boolean;
@@ -12,10 +13,10 @@ const ChatBubble = ({ ownMessage, address, message, timestamp }: Props) => {
   const formatDate = new Date(parseInt(timestamp)*1000).toString();
 
   return (
-    <div className="chat__row">
+    <div className="chat_row">
       {!ownMessage && <small className="address-text">Sent by: {address} on {formatDate}</small>}
-      <div className={["chat__bubble", bubblePosition].join(" ")}>
-        <div className={["chat__message", bubblePosition].join(" ")}>
+      <div className={["chat_bubble", bubblePosition].join(" ")}>
+        <div className={["chat_message", bubblePosition].join(" ")}>
           {ownMessage}
           {message}
         </div>

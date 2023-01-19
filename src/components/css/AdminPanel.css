@@ -1,0 +1,67 @@
+.admin-panel-wrapper {
+    margin-bottom: 35px;
+}
+
+.change-admin-section {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.change-admin-input {
+    height: 35px;
+    border-radius: 10px;
+    background-color: #868e96;
+    border: 1px solid black;
+    width: 100%;
+    flex: 4;
+}
+
+.change-button {
+    background-color: teal;
+    height: 38px;
+    flex: 1;
+    border-radius: 10px;
+}
+
+.clear-chat-section {
+    display: flex;
+}
+
+.ban-user-section {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.ban-adress-input {
+    height: 35px;
+    border-radius: 10px;
+    background-color: #868e96;
+    border: 1px solid black;
+    width: 100%;
+    flex: 4;
+}
+
+.clear-chat-section button {
+    flex: 1;
+    height: 35px;
+    background-color: coral;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.ban-button {
+    background-color: crimson;
+    height: 38px;
+    flex: 1;
+    border-radius: 10px;
+}
+
+.unban-button {
+    background-color: teal;
+    height: 38px;
+    flex: 1;
+    border-radius: 10px;
+}

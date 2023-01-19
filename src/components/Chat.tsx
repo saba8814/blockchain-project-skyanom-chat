@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Message } from "../types";
 import ChatBubble from "./ChatBubble";
+import "./css/Chat.css"
 import { ethers } from "ethers";
 
 interface Props {
