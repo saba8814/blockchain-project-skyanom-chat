@@ -10,10 +10,13 @@ body {
 
 .state-message {
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
 }
-
+.state-message b{
+  color: red;
+  font-weight: 900;
+}
 .wrapper {
   width: 80vw;
   display: flex;
