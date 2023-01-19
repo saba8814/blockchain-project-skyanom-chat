@@ -39,27 +39,24 @@ function App() {
   useEffect(() => {
     if (!chatContract) return;
     getAdminAddress();
+    checkIsUserBanned();
   }, [chatContract]);
 
-  useEffect(()=>{
-    if (!chatContract) return;
-    checkIsUserBanned();
-  },[account])
 
   return (
     <div className="wrapper">
       <LogoSection />
       <Login setAccount={setAccount} account={account} />
-      {!isUserBanned&&
+      {isUserBanned &&
+        <h1 className="error-log">THIS ACCOUNT IS BANNED!</h1>
+      }
+      {!isUserBanned &&
         <div>
             <Chat account={account} chatContract={chatContract} />
           {(account === adminAddress && adminAddress!=undefined) &&
             <AdminPanel account={account} chatContract={chatContract} />
           }
         </div>
-      }
-      {isUserBanned &&
-        <h1 className="error-log">THIS ACCOUNT IS BANNED!</h1>
       }
     </div>
   );

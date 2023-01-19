@@ -31,7 +31,6 @@ const Chat = ({ account, chatContract }: Props) => {
 
   const getMessages = async () => {
     if (!chatContract || account) return;
-
     const messages = await chatContract.getMessages();
     //const messages = [{ "sender": "0xC877CC82D3cadd73000c88B47313b5de03e49EdD", "date": null, "content": "poru😀ka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka2" }, { "sender": "xx", "date": null, "content": "poruka3" }, { "sender": "xx", "date": null, "content": "poruka4" }]
     setMessages(() => {
@@ -69,15 +68,18 @@ const Chat = ({ account, chatContract }: Props) => {
       setTxnStatus(null);
     }
   };
+
   const changeDecryptionKey = () => {
     setDecryptionKey(decryptKeyInput);
     setDecryptionKeyInput("");
   }
+
   useEffect(() => {
     if (!chatContract) return;
     getMessages();
     setupMessageListener();
   }, [chatContract]);
+
   if (account) {
     return (
       <>
@@ -91,7 +93,7 @@ const Chat = ({ account, chatContract }: Props) => {
           <button className="set-encryption-button" onClick={changeDecryptionKey}>CHANGE KEY</button>
         </div>
         <p className="state-message">
-          Currently set encryption/decryption key is: <b>{decryptionKey.length==0 ? "notset" : decryptionKey} </b>
+          Currently set encryption/decryption key is: <b>{decryptionKey.length===0 ? "notset" : decryptionKey} </b>
         </p>
         <div className="chat" ref={chatParent}>
           <div className="chat_messages">

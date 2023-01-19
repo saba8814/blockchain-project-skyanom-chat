@@ -19,7 +19,7 @@ const ChatBubble = ({ ownMessage, address, message, timestamp,decryptionKey }: P
       <div className={["chat_bubble", bubblePosition].join(" ")}>
         <div className={["chat_message", bubblePosition].join(" ")}>
           {ownMessage}
-          {decryptedMessage.length===0 ? message : decryptedMessage}
+          {decryptedMessage.length===0 ? message.substring(0,45) : decryptedMessage}
         </div>
       </div>
     </div>
