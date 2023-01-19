@@ -20,7 +20,7 @@ const Login = ({ setAccount, account }: Props) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="login-wrapper">
       {account && (
         <>
           <b>You are connected using following address:</b>

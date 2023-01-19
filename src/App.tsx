@@ -10,7 +10,6 @@ import LogoSection from "./components/LogoSection";
 function App() {
   const contractAddress = "0x74f6ee0990F7F08934Ba8f3614a58e49d9ad68B5";
   const [account, setAccount] = useState<string>();
-
   const [adminAddress, setAdminAddress] = useState<string>();
   const [isUserBanned, setIsUserBanned] = useState<boolean|null>(null);
 
@@ -22,10 +21,11 @@ function App() {
         return adminAddress;
       });
   };
+
   const checkIsUserBanned = async () =>{
     if(!chatContract) return;
 
-    const isBanned = await chatContract.isBanned(account);
+    const isBanned = false;
     setIsUserBanned(() => {
       return isBanned;
     });
@@ -50,16 +50,16 @@ function App() {
     <div className="wrapper">
       <LogoSection />
       <Login setAccount={setAccount} account={account} />
-      {!isUserBanned &&
-        <>
-          <Chat account={account} chatContract={chatContract} />
-          {(account === adminAddress && account) &&
+      {!isUserBanned&&
+        <div>
+            <Chat account={account} chatContract={chatContract} />
+          {(account === adminAddress) &&
             <AdminPanel account={account} chatContract={chatContract} />
           }
-        </>
+        </div>
       }
       {isUserBanned &&
-        <h1>YOU ARE BANNED</h1>
+        <h1 className="error-log">THIS ACCOUNT IS BANNED!</h1>
       }
     </div>
   );

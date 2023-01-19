@@ -17,7 +17,7 @@ const Chat = ({ account, chatContract }: Props) => {
     if (!chatContract || account) return;
 
     const messages = await chatContract.getMessages();
-    //const messages = [{"sender":"0xC877CC82D3cadd73000c88B47313b5de03e49EdD","date":null,"content":"poru😀ka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka1"},{"sender":"xx","date":null,"content":"poruka2"},{"sender":"xx","date":null,"content":"poruka3"},{"sender":"xx","date":null,"content":"poruka4"}]
+    //const messages = [{ "sender": "0xC877CC82D3cadd73000c88B47313b5de03e49EdD", "date": null, "content": "poru😀ka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka1" }, { "sender": "xx", "date": null, "content": "poruka2" }, { "sender": "xx", "date": null, "content": "poruka3" }, { "sender": "xx", "date": null, "content": "poruka4" }]
     setMessages(() => {
       return messages.map((w: any) => ({
         address: w.sender,
@@ -26,7 +26,7 @@ const Chat = ({ account, chatContract }: Props) => {
       }));
     });
   };
-  
+
   const setupMessageListener = (): ethers.Contract | void => {
     if (!chatContract) return;
 
@@ -55,55 +55,54 @@ const Chat = ({ account, chatContract }: Props) => {
   };
 
   useEffect(() => {
-    if (!chatContract || messages) return;
+    if (!chatContract) return;
     getMessages();
     setupMessageListener();
   }, [chatContract]);
-  if(account){
+  if (account) {
+    return (
+      <div className="chat">
+        <div className="chat_messages">
+          {(!chatContract || !account) && (
+            <p className="state-message">
+              Connect using metamask to access chat!
+            </p>
+          )}
+          {account && messages && messages.length === 0 && (
+            <p className="state-message">Chat is empty!</p>
+          )}
+          {messages &&
+            messages.length > 0 &&
+            messages.map((m, i) => (
+              <ChatBubble
+                key={i}
+                ownMessage={m.address === account}
+                address={m.address}
+                message={m.content}
+                timestamp={m.date}
+              />
+            ))}
 
-  
-  return (
-    <div className="chat">
-      <div className="chat__messages">
-        {(!chatContract || !account) && (
-          <p className="state-message">
-            Connect using metamask to access chat!
-          </p>
-        )}
-        {account && messages && messages.length === 0 && (
-          <p className="state-message">Chat is empty!</p>
-        )}
-        {messages &&
-          messages.length > 0 &&
-          messages.map((m, i) => (
-            <ChatBubble
-              key={i}
-              ownMessage={m.address === account}
-              address={m.address}
-              message={m.content}
-              timestamp={m.date}
-            />
-          ))}
-      </div>
-
-      <div className="chat__actions-wrapper">
-        <div className="chat__input">
-          <textarea
-            disabled={!!txnStatus || !account}
-            value={textareaContent}
-            onChange={(e) => {
-              setTextareaContent(e.target.value);
-            }}
-          ></textarea>
         </div>
-        <button onClick={sendMessage} className="send-message-button" disabled={!!txnStatus || !account}>
+
+        <div className="chat-actions-wrapper">
+          <div className="chat-input">
+            <textarea
+              disabled={!!txnStatus || !account}
+              value={textareaContent}
+              onChange={(e) => {
+                setTextareaContent(e.target.value);
+              }}
+            ></textarea>
+          </div>
+          <button onClick={sendMessage} className="send-message-button" disabled={!!txnStatus || !account}>
             {txnStatus || "💬"}
           </button>
+        </div>
       </div>
-    </div>
-  );
-}
-return (<div></div>);
+    );
+  }
+  return (<div></div>);
 };
 
 export default Chat;

@@ -1,10 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif;
   background-color: #2A2C3F;
 }
 
@@ -32,7 +28,7 @@ code {
   margin-bottom: 2.5vh;
 }
 
-.sidebar {
+.login-wrapper {
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -79,12 +75,11 @@ code {
 }
 
 .chat_messages {
-  overflow: visible scroll;
   padding-bottom: 20px;
   border-top-left-radius: 20px;
 }
 
-.chat__actions-wrapper {
+.chat-actions-wrapper {
   display: flex;
   flex: 1;
   width: 100%;
@@ -93,7 +88,7 @@ code {
   bottom: 0px;
 }
 
-.chat__input {
+.chat-input {
   flex: 3;
   align-items: center;
   justify-content: center;
