@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Message } from "../types";
 import ChatBubble from "./ChatBubble";
 import "./css/Chat.css"
@@ -13,6 +13,17 @@ const Chat = ({ account, chatContract }: Props) => {
   const [textareaContent, setTextareaContent] = useState("");
   const [txnStatus, setTxnStatus] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>();
+  const chatParent = useRef<HTMLDivElement>(null);
+
+  const scrollToBottomOfTheChat = () =>{
+    if(chatParent.current) {
+       chatParent.current.scrollTop = chatParent.current.scrollHeight;
+    }
+  }
+
+    useEffect(() => {
+      scrollToBottomOfTheChat();
+  })
 
   const getMessages = async () => {
     if (!chatContract || account) return;
@@ -62,7 +73,7 @@ const Chat = ({ account, chatContract }: Props) => {
   }, [chatContract]);
   if (account) {
     return (
-      <div className="chat">
+      <div className="chat" ref={chatParent}>
         <div className="chat_messages">
           {(!chatContract || !account) && (
             <p className="state-message">

@@ -53,7 +53,7 @@ function App() {
       {!isUserBanned&&
         <div>
             <Chat account={account} chatContract={chatContract} />
-          {(account === adminAddress) &&
+          {(account === adminAddress && adminAddress!=undefined) &&
             <AdminPanel account={account} chatContract={chatContract} />
           }
         </div>
